@@ -1,0 +1,29 @@
+{
+  "name": "cryptokitty-maker-nuxt",
+  "version": "1.0.0",
+  "description": "cryptokitty maker on nuxt.js",
+  "author": "David, Shin",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0",
+      "port": "8200"
+    }
+  },
+  "dependencies": {
+    "nuxt": "^1.0.0",
+    "semantic-ui-css": "^2.3.1",
+    "semantic-ui-vue": "^0.2.9"
+  },
+  "devDependencies": {
+    "cross-env": "^5.0.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1"
+  }
+}
