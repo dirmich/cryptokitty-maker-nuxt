@@ -1,22 +1,25 @@
 # cryptokitty-maker-nuxt
-
 > cryptokitty maker on nuxt.js
+
+Make cryptokitties easily
+
+Inpired from [https://github.com/BytesForBites/cryptokitty-designer](https://github.com/BytesForBites/cryptokitty-designer)
+
+implements with Nust.js
 
 ## Build Setup
 
 ``` bash
 # install dependencies
-$ yarn install
+$ yarn 
 
 # serve with hot reload at localhost:3000
-$ yarn run dev
+$ yarn dev
 
 # build for production and launch server
-$ yarn run build
+$ yarn build
 $ yarn start
 
 # generate static project
-$ yarn run generate
+$ yarn generate
 ```
-
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
