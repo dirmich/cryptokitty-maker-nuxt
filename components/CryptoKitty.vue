@@ -1,18 +1,22 @@
 <template>
-  <SuiContainer :style="style.relative">
+  <sui-container :style="style.relative">
     <div :style="style.absolute" v-if="nullkitty">
       <img :style="style.fixed" :src="imgKitty"/>
     </div>
     <div :style="style.absolute" v-else>
-      <img :style="style.fixed" :src="kittyImage"/>
-      <img :style="style.fixed" :src="kittyMouth"/>
-      <img :style="style.fixed" :src="kittyEye"/>
+      <div :style="style.fixed" v-html="kittyImage"/>
+      <div :style="style.fixed" v-html="kittyMouth"/>
+      <div :style="style.fixed" v-html="kittyEye"/>
     </div>
-  </SuiContainer>
+  </sui-container>
 </template>
 
 <script>
 // import c from '../utils/colors'
+      // <img :style="style.fixed" :src="kittyImage"/>
+      // <img :style="style.fixed" :src="kittyMouth"/>
+      // <img :style="style.fixed" :src="kittyEye"/>
+
 const c = require('../utils/colors')
 const t = require('../utils/types')
 import { Genes } from '../utils/genes'
@@ -50,44 +54,62 @@ export default {
       }
     }
   },
-  async beforeCreate() {        
-      this.gene = Genes()
-  },
   computed: {
     nullkitty() {
       return this.kittyImage === null || this.kittyMouth === null || this.kittyEye === null
     },
-    kittyImage() {
-      const currtype = this.body+'-'+this.pattern
+  },
+  asyncComputed: {
 
+    async kittyImage() {
+      const currtype = this.body+'-'+this.pattern      
+      const currColor = this.colors
+      if (typeof this.gene==='undefined') {
+        this.gene = await Genes()
+      }
       let ret=this.gene[currtype];
       const color = this.detectKittyColors(ret);
       if (isNonNull(color[0])) {
+        console.log('0:',c.Primary[color[0]],"==>",this.colors[0])
         ret = ret.replace(new RegExp(c.Primary[color[0]],"g"), this.colors[0]);
       }
       if (isNonNull(color[1])) {
+        console.log('1:',c.Secondary[color[1]],"==>",this.colors[1])
         ret = ret.replace(new RegExp(c.Secondary[color[1]],"g"), this.colors[1]);
       }
       if (isNonNull(color[2])) {
+        console.log('2:',c.Tertiary[color[2]],"==>",this.colors[2])
         ret = ret.replace(new RegExp(c.Tertiary[color[2]],"g"), this.colors[2]);
       }
       return ret;
     },
-    kittyMouth() {
-      let ret=this.gene[this.mouth];
+    async kittyMouth() {
+      const currtype = this.mouth
+      const currColor = this.colors
+      if (typeof this.gene==='undefined') {
+        this.gene = await Genes()
+      }
+      let ret=this.gene[currtype];
       const color = this.detectKittyColors(ret);
       if (isNonNull(color[0])) {
+        console.log('4:',c.Primary[color[0]],"==>",this.colors[0])
         ret = ret.replace(new RegExp(c.Primary[color[0]],"g"), this.colors[0]);
       }
-      return this.gene[this.mouth]
+      return ret
     },
-    kittyEye() {
-      let ret=this.gene[this.eye];
+    async kittyEye() {
+      const currtype = this.eye
+      const currColor = this.colors
+      if (typeof this.gene==='undefined') {
+        this.gene = await Genes()
+      }
+      let ret=this.gene[currtype];
       const color = this.detectKittyColors(ret);
       if (isNonNull(color[3])) {
+        console.log('5:',c.EyeColor[color[3]],"==>",this.colors[3])
         ret = ret.replace(new RegExp(c.EyeColor[color[3]],"g"), this.colors[3]);
       }
-      return this.gene[this.eye]
+      return ret
     }
   },
   methods: {
@@ -114,7 +136,7 @@ export default {
           colors[3] = color;
         }
       }
-
+      console.log(colors)
       return colors;
     }
   }

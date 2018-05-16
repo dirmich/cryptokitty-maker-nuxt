@@ -38,7 +38,8 @@ module.exports = {
   */
   plugins: [
     // '@/plugins/vuetify'
-    '@/plugins/semantic-ui'
+    '@/plugins/semantic-ui',
+    '@/plugins/async-computed'
   ],
 
   /*
@@ -53,6 +54,7 @@ module.exports = {
   build: {
     vendor: [
       'semantic-ui-vue',
+      'vue-async-computed'
       // 'semantic-ui-css',
     ],
     plugins: [
@@ -61,6 +63,13 @@ module.exports = {
         '_': 'lodash'
       })
     ],
+    // loaders: [
+    //   {
+    //     test: /\.svg$/,
+    //     include: '/static\/cattributes/',
+    //     loader: 'raw-loader'
+    //   }
+    // ],
     /*
     ** You can extend webpack config here
     */
@@ -73,6 +82,12 @@ module.exports = {
           })
         ]
       }
+      // if (ctx.isClient) {
+      //   config.module.rules.push({
+      //     test: /\.svg$/,
+      //     loader: 'raw-loader'
+      //     })
+      // }
     }
   }
 }

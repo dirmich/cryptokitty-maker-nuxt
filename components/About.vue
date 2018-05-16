@@ -7,7 +7,7 @@
             :body="body"
             :mouth="mouth"
             :eye="eye"
-            :patter="pattern"
+            :pattern="pattern"
             :colors="colors"
           />
         </sui-grid-row>

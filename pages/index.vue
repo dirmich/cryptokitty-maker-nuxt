@@ -3,10 +3,9 @@
     <sui-grid-row>
       <SuiContainer text>
         <p>
-          <b> CryptoKitty Designer </b>
+          <b> CryptoKitty Maker </b>
           <p> Make the kitty of your dreams </p>
-          Kittens and ETH appreciated <span> @ </span>
-          <SuiInput value='0x02Ee97a13e434717e3FFa12758a235D1a1680775'/>
+          <p> Inspired from <b>https://github.com/BytesForBites/cryptokitty-designer</b></p>
         <p/>
       </SuiContainer>
     </sui-grid-row>
@@ -20,9 +19,14 @@
 
 <script>
 import About from '../components/About'
+import { Genes } from '../utils/genes'
+
 export default {
   components:{
     About
+  },
+  async mounted() {
+    await Genes()
   }
 }
 </script>

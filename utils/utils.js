@@ -16,6 +16,7 @@ export const randomKey = (v) => {
 export const makeListEnumValue = (v) => {
 	const keys = Object.keys({...v});
 	let ret = []
+
 	keys.forEach((key)=>{
 		ret.push({
 			key:key,
@@ -28,9 +29,8 @@ export const makeListEnumValue = (v) => {
 
 export const makeListKey = (v) => {
 	const keys = Object.keys({...v});
-	console.log(keys)
-
 	let ret = []
+
 	keys.forEach((key)=>{
 		ret.push({
 			key:key,
