@@ -19,14 +19,14 @@
 
 <script>
 import About from '../components/About'
-import { Genes } from '../utils/genes'
 
 export default {
   components:{
     About
   },
-  async mounted() {
-    await Genes()
-  }
+
+  asyncData({store, route}) {
+    return store.dispatch('loadGene')
+  },
 }
 </script>

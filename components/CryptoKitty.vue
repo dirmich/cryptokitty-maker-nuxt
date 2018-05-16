@@ -12,15 +12,11 @@
 </template>
 
 <script>
-// import c from '../utils/colors'
-      // <img :style="style.fixed" :src="kittyImage"/>
-      // <img :style="style.fixed" :src="kittyMouth"/>
-      // <img :style="style.fixed" :src="kittyEye"/>
-
 const c = require('../utils/colors')
 const t = require('../utils/types')
 import { Genes } from '../utils/genes'
 import { isNonNull, randomEnumValue } from '../utils/utils'
+import { mapGetters } from 'vuex'
 export default {
   props: {
     body: {
@@ -58,16 +54,13 @@ export default {
     nullkitty() {
       return this.kittyImage === null || this.kittyMouth === null || this.kittyEye === null
     },
-  },
-  asyncComputed: {
-
-    async kittyImage() {
+    kittyImage() {
       const currtype = this.body+'-'+this.pattern      
       const currColor = this.colors
-      if (typeof this.gene==='undefined') {
-        this.gene = await Genes()
-      }
       let ret=this.gene[currtype];
+      if (typeof ret==='undefined') {
+        return null
+      }
       const color = this.detectKittyColors(ret);
       if (isNonNull(color[0])) {
         ret = ret.replace(new RegExp(c.Primary[color[0]],"g"), this.colors[0]);
@@ -80,32 +73,35 @@ export default {
       }
       return ret;
     },
-    async kittyMouth() {
+    kittyMouth() {
       const currtype = this.mouth
       const currColor = this.colors
-      if (typeof this.gene==='undefined') {
-        this.gene = await Genes()
-      }
       let ret=this.gene[currtype];
+      if (typeof ret==='undefined') {
+        return null
+      }
       const color = this.detectKittyColors(ret);
       if (isNonNull(color[0])) {
         ret = ret.replace(new RegExp(c.Primary[color[0]],"g"), this.colors[0]);
       }
       return ret
     },
-    async kittyEye() {
+    kittyEye() {
       const currtype = this.eye
       const currColor = this.colors
-      if (typeof this.gene==='undefined') {
-        this.gene = await Genes()
-      }
       let ret=this.gene[currtype];
+      if (typeof ret==='undefined') {
+        return null
+      }
       const color = this.detectKittyColors(ret);
       if (isNonNull(color[3])) {
         ret = ret.replace(new RegExp(c.EyeColor[color[3]],"g"), this.colors[3]);
       }
       return ret
-    }
+    },
+    ...mapGetters({
+      gene:'gene'
+    })
   },
   methods: {
     detectKittyColors(svgText) {

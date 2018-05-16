@@ -30,16 +30,13 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    // 'vuetify/src/stylus/main.styl'
   ],
 
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    // '@/plugins/vuetify'
     '@/plugins/semantic-ui',
-    '@/plugins/async-computed'
   ],
 
   /*
@@ -54,8 +51,6 @@ module.exports = {
   build: {
     vendor: [
       'semantic-ui-vue',
-      'vue-async-computed'
-      // 'semantic-ui-css',
     ],
     plugins: [
       new webpack.ProvidePlugin({
@@ -63,13 +58,6 @@ module.exports = {
         '_': 'lodash'
       })
     ],
-    // loaders: [
-    //   {
-    //     test: /\.svg$/,
-    //     include: '/static\/cattributes/',
-    //     loader: 'raw-loader'
-    //   }
-    // ],
     /*
     ** You can extend webpack config here
     */
@@ -82,12 +70,6 @@ module.exports = {
           })
         ]
       }
-      // if (ctx.isClient) {
-      //   config.module.rules.push({
-      //     test: /\.svg$/,
-      //     loader: 'raw-loader'
-      //     })
-      // }
     }
   }
 }
