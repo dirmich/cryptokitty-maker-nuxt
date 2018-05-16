@@ -70,15 +70,12 @@ export default {
       let ret=this.gene[currtype];
       const color = this.detectKittyColors(ret);
       if (isNonNull(color[0])) {
-        console.log('0:',c.Primary[color[0]],"==>",this.colors[0])
         ret = ret.replace(new RegExp(c.Primary[color[0]],"g"), this.colors[0]);
       }
       if (isNonNull(color[1])) {
-        console.log('1:',c.Secondary[color[1]],"==>",this.colors[1])
         ret = ret.replace(new RegExp(c.Secondary[color[1]],"g"), this.colors[1]);
       }
       if (isNonNull(color[2])) {
-        console.log('2:',c.Tertiary[color[2]],"==>",this.colors[2])
         ret = ret.replace(new RegExp(c.Tertiary[color[2]],"g"), this.colors[2]);
       }
       return ret;
@@ -92,7 +89,6 @@ export default {
       let ret=this.gene[currtype];
       const color = this.detectKittyColors(ret);
       if (isNonNull(color[0])) {
-        console.log('4:',c.Primary[color[0]],"==>",this.colors[0])
         ret = ret.replace(new RegExp(c.Primary[color[0]],"g"), this.colors[0]);
       }
       return ret
@@ -106,7 +102,6 @@ export default {
       let ret=this.gene[currtype];
       const color = this.detectKittyColors(ret);
       if (isNonNull(color[3])) {
-        console.log('5:',c.EyeColor[color[3]],"==>",this.colors[3])
         ret = ret.replace(new RegExp(c.EyeColor[color[3]],"g"), this.colors[3]);
       }
       return ret
@@ -136,7 +131,6 @@ export default {
           colors[3] = color;
         }
       }
-      console.log(colors)
       return colors;
     }
   }
