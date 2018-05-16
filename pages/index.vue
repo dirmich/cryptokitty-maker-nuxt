@@ -1,6 +1,6 @@
 <template>  
-  <SuiGrid>
-    <SuiGridRow>
+  <sui-grid>
+    <sui-grid-row>
       <SuiContainer text>
         <p>
           <b> CryptoKitty Designer </b>
@@ -9,20 +9,20 @@
           <SuiInput value='0x02Ee97a13e434717e3FFa12758a235D1a1680775'/>
         <p/>
       </SuiContainer>
-    </SuiGridRow>
-    <SuiGridRow>
-      <SuiGridColumn>
-        <CryptoKitty />
-      </SuiGridColumn>
-    </SuiGridRow>
-  </SuiGrid>
+    </sui-grid-row>
+    <sui-grid-row>
+      <sui-grid-column>
+        <about />
+      </sui-grid-column>
+    </sui-grid-row>
+  </sui-grid>
 </template>
 
 <script>
-import CryptoKitty from '../components/CryptoKitty'
+import About from '../components/About'
 export default {
   components:{
-    CryptoKitty
+    About
   }
 }
 </script>
