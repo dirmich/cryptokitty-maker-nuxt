@@ -5,7 +5,7 @@ Make cryptokitties easily
 
 Inpired from [https://github.com/BytesForBites/cryptokitty-designer](https://github.com/BytesForBites/cryptokitty-designer)
 
-implements with Nust.js
+implements with Nuxt.js
 
 ## Build Setup
 
